@@ -15,3 +15,25 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+Route::get('cinemas', function()
+{	
+	return Cinema::lists('name');
+});
+
+
+Route::get('cinema/{name?}', function( $name = "" )
+{
+	return Cinema::where('name', '=', $name)->get(array('id'))[0]['id'];
+
+});
+
+Route::get('movie/{name?}', function( $movie_name = "" )
+{
+
+	//return $cinema_ids[0]->cinema_id;
+	return SessionTime::getCinemasByMovieName($movie_name);
+	//return movie::where('name', '=', $movie_name)->get();
+
+});
+
