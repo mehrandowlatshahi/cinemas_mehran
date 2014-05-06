@@ -32,11 +32,15 @@ class Cinema extends Eloquent  {
 		return $cinemas;
 	}
 	
-	
-	
+		
 	
 	/**
 	 * add a movie session to this cinema.
+	 * @param $name is name of movie 
+	 * @param $dt is date and time of movie session
+	 * TODO we can add the movie if the name not in the movies table
+	 * TODO check input param formats and validity
+	 * 
 	 *
 	 * @return string
 	 */

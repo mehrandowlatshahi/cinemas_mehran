@@ -37,7 +37,7 @@ Route::get('movie/cinemas/{name?}', function( $movie_name = "" )
 
 });
 
-Route::get('cinema/movies/{cname?}', function( $name = "" )
+Route::get('cinema/movies/{name?}', function( $name = "" )
 {
 	//return SessionTime::getMoviesByCinemaName( $name );
 	return Response::json(SessionTime::getMoviesByCinemaName( $name ));
@@ -45,3 +45,10 @@ Route::get('cinema/movies/{cname?}', function( $name = "" )
 	
 });
 
+Route::get('cinema/movies/{name?}/{before?}/{after?}', function( $name = "", $before = "2014-05-05 10:30:00", $after = "9114-05-05 10:30:00" )
+{
+	//return SessionTime::getMoviesByCinemaName( $name );
+	return Response::json(SessionTime::getMoviesByCinemaNameAndDates($name, $before, $after));
+	//Response::json(array('name' => 'Steve', 'state' => 'CA'));
+
+});

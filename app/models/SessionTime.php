@@ -48,6 +48,24 @@ class SessionTime extends Eloquent  {
 		
 	}
 	
+	public static function getMoviesByCinemaNameAndDates($name, $before_date, $after_date){
+	
+		$cid = Cinema::where('name', '=', $name)->get(array('id'))[0]['id'];
+	
+		//$movie_ids = SessionTime::where('cinema_id', '=', $cid)->get(array('movie_id'));
+
+		$movie_ids = SessionTime::whereNested(function($query)
+		{
+			$query->where('cinema_id', '=', $cid);
+			$query->where('date_time', '>', $before_date);
+			$query->where('date_time', '<', $after_date);
+		})->get(array('movie_id'));
+		
+		
+		return Movie::getMovieNames($movie_ids) ;
+	
+	}
+	
 	
 
 }
