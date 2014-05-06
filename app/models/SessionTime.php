@@ -38,6 +38,16 @@ class SessionTime extends Eloquent  {
 		return Cinema::getCinemaNames($cinema_ids) ;
 	}
 	
+	public static function getMoviesByCinemaName($name){
+		
+		$cid = Cinema::where('name', '=', $name)->get(array('id'))[0]['id'];
+		
+		$movie_ids = SessionTime::where('cinema_id', '=', $cid)->get(array('movie_id'));
+				
+		return Movie::getMovieNames($movie_ids) ;
+		
+	}
+	
 	
 
 }

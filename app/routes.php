@@ -22,18 +22,26 @@ Route::get('cinemas', function()
 });
 
 
-Route::get('cinema/{name?}', function( $name = "" )
+Route::get('cinema/details/{name?}', function( $name = "" )
 {
-	return Cinema::where('name', '=', $name)->get(array('id'))[0]['id'];
+	return Cinema::where('name', '=', $name)->get();
 
 });
 
-Route::get('movie/{name?}', function( $movie_name = "" )
+Route::get('movie/cinemas/{name?}', function( $movie_name = "" )
 {
 
 	//return $cinema_ids[0]->cinema_id;
 	return SessionTime::getCinemasByMovieName($movie_name);
 	//return movie::where('name', '=', $movie_name)->get();
 
+});
+
+Route::get('cinema/movies/{cname?}', function( $name = "" )
+{
+	//return SessionTime::getMoviesByCinemaName( $name );
+	return Response::json(SessionTime::getMoviesByCinemaName( $name ));
+	//Response::json(array('name' => 'Steve', 'state' => 'CA'));
+	
 });
 

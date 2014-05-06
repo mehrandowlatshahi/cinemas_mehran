@@ -33,6 +33,8 @@ class Cinema extends Eloquent  {
 	}
 	
 	
+	
+	
 	/**
 	 * add a movie session to this cinema.
 	 *
@@ -47,6 +49,10 @@ class Cinema extends Eloquent  {
 		'date_time' => $dt
 		)
 		);
+	}
+	
+	public function getListOfMovies(){
+		
 	}
 	
 	public function removeMovieSession($movie, $dt){
