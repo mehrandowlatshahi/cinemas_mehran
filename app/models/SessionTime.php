@@ -54,7 +54,7 @@ class SessionTime extends Eloquent  {
 	
 		//$movie_ids = SessionTime::where('cinema_id', '=', $cid)->get(array('movie_id'));
 
-		$movie_ids = SessionTime::whereNested(function($query)
+		$movie_ids = SessionTime::whereNested(function($query) use($cid, $after_date, $before_date)
 		{
 			$query->where('cinema_id', '=', $cid);
 			$query->where('date_time', '>', $before_date);
@@ -63,7 +63,7 @@ class SessionTime extends Eloquent  {
 		
 		
 		return Movie::getMovieNames($movie_ids) ;
-	
+		
 	}
 	
 	

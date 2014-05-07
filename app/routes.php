@@ -49,6 +49,7 @@ Route::get('cinema/movies/{name?}/{before?}/{after?}', function( $name = "", $be
 {
 	//return SessionTime::getMoviesByCinemaName( $name );
 	return Response::json(SessionTime::getMoviesByCinemaNameAndDates($name, $before, $after));
+	
 	//Response::json(array('name' => 'Steve', 'state' => 'CA'));
 
 });
